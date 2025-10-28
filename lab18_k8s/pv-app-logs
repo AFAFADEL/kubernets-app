@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-app-logs
+spec:
+  capacity:
+    storage: 1Gi              # السعة
+  accessModes:
+    - ReadWriteMany           # أكثر من بود يقدر يكتب ويقرأ
+  persistentVolumeReclaimPolicy: Retain  # ما نحذفش البيانات بعد الاستخدام
+  hostPath:
+    path: /mnt/app-logs       # المسار على النود
+    type: DirectoryOrCreate
